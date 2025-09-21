@@ -63,7 +63,7 @@
                 const result=await response.text();
                 let js=document.createElement('script');
                 js.innerHTML=result;
-                document.querySelector('header').append(js);
+                document.querySelector('head').append(js);
                 console.log('Server response: ', result);
             }catch(error){
                 console.error('Error from send JSON: ', error);
