@@ -24,6 +24,7 @@
             <input type="text" name="message">
             <button>Send</button>
         </form>
+        <div id="comments"></div>
     </main>
     <script>
         const form=document.querySelector("#sendForm");
@@ -34,7 +35,7 @@
                 message: form.elements['message'].value.trim(),
                 date: new Date().toISOString(),
                 idea: {
-                    id: 'a000',
+                    id: 'a777',
                     site: {
                         ancestorOrigins: {},
                         href: location.href,
