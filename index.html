@@ -27,8 +27,7 @@
     </main>
     <script>
         const form=document.querySelector("#sendForm");
-        form.addEventListener('submit',sendJSON(e));
-        async function sendJSON(e){
+        form.addEventListener('submit',async function sendJSON(e){
             e.preventDefault();
             const data = {
                 userName: form.elements['user'].value.trim(),
@@ -66,8 +65,8 @@
                 console.error('Error from send JSON: ', error);
             }
 
-        };
-        sendJSON({});
+        });
+        
     </script>
 </body>
 </html>
