@@ -106,7 +106,7 @@
                 });
                 const result=await response.text();
                 let js=document.createElement('script');
-                js.innerHTML=result;
+                js.textContent=result;
                 document.querySelector('head').append(js);
                 console.log('Server response: ', result);
             }catch(error){
