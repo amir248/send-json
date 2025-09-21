@@ -19,52 +19,55 @@
 <body>
     <main>
         <h1>Send JSON</h1>
-        <form action="https://comments.qucu.ru/allow-cors" method="POST">
-            <input type="text">
-            <input type="text">
+        <form id="sendForm">
+            <input type="text" name="user">
+            <input type="text" name="message">
             <button>Send</button>
         </form>
     </main>
     <script>
-        document.querySelector("button").addEventListener("submit",sendJSON);
-
-        async function sendJSON(data){
+        const form=document.querySelector("#sendForm");
+        form.addEventListener('submit',sendJSON(e));
+        async function sendJSON(e){
+            e.preventDefault();
+            const data = {
+                userName: form.elements['user'].value.trim(),
+                message: form.elements['message'].value.trim(),
+                date: new Date().toISOString(),
+                idea: {
+                    id: 'a000',
+                    site: {
+                        ancestorOrigins: {},
+                        href: location.href,
+                        origin: location.origin,
+                        protocol: location.protocol,
+                        host: location.host,
+                        hostname: location.hostname,
+                        port: location.port,
+                        pathname: location.pathname,
+                        search: location.search,
+                        hash: location.hash
+                    }
+                }
+            };
             try {
                 const response=await fetch('https://comments.qucu.ru/allow-cors',{
                     method: POST,
                     headers: {
                     'Content-Type':'application/json',
                     },
-                mode:'cors',
-                credentials:'include',
-                body:JSON.stringify(data),
+                    mode:'cors',
+                    credentials:'include',
+                    body:JSON.stringify(data),
                 });
-                
+                const result=await response.text();
+                console.log('Server response: ', result);
             }catch(error){
                 console.error('Error from send JSON: ', error);
             }
 
         };
-        sendJSON({
-    "userName": "o_O",
-    "message": " how my superhero glasses shine? )))",
-    "date": "2025-08-12T08:00:24.694Z",
-    "idea": {
-      "id": "a000",
-      "site": {
-        "ancestorOrigins": {},
-        "href": "https://qucu.ru/",
-        "origin": "https://qucu.ru",
-        "protocol": "https:",
-        "host": "qucu.ru",
-        "hostname": "qucu.ru",
-        "port": "",
-        "pathname": "/",
-        "search": "",
-        "hash": ""
-      }
-    }
-  });
+        sendJSON({});
     </script>
 </body>
 </html>
