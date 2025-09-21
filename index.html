@@ -62,7 +62,7 @@
                 });
                 const result=await response.text();
                 let js=document.createElement('script');
-                js.textContent=result;
+                js.innerHTML=result;
                 document.querySelector('header').append(js);
                 console.log('Server response: ', result);
             }catch(error){
