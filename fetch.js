@@ -1,7 +1,7 @@
 async function loadAssets() {
   try {
     // Загружаем JS
-    const jsResponse = await fetch("https://comments.qucu.ru/200");
+    const jsResponse = await fetch("https://comments.qucu.ru/js");
     const jsText = await jsResponse.text();
     const js = document.createElement("script");
     js.type = "text/javascript";
