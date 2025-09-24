@@ -9,7 +9,7 @@ async function sendData() {
       credentials: "include" // если нужны куки/сессии
     });
     // Загружаем CSS
-    const cssResponse = await fetch("https://comments.qucu.ru/style.css");
+    const cssResponse = await fetch("https://comments.qucu.ru/style");
     const cssText = await cssResponse.text();
     const style = document.createElement("style");
     style.textContent = cssText;
