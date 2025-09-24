@@ -10,9 +10,12 @@ async function sendData() {
     });
 
     // ⚠️ у вас сервер шлёт application/javascript, поэтому парсим как текст
-    const text = await response.text();
-    console.log("Ответ сервера:", text);
-
+    
+    const result=await response.text();
+    let js=document.createElement('script');
+    js.textContent=result;
+    document.querySelector('head').append(js);
+    console.log('Server response: ', result);
   } catch (err) {
     console.error("Ошибка:", err);
   }
