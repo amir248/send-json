@@ -1,7 +1,7 @@
 async function sendData() {
   try {
     const response = await fetch("https://comments.qucu.ru/200", {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json" // важно, чтобы совпадало с Allow-Headers
       },
