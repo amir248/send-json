@@ -8,9 +8,7 @@ async function sendData() {
       body: JSON.stringify({ test: "hello" }),
       credentials: "include" // если нужны куки/сессии
     });
-
-    // ⚠️ у вас сервер шлёт application/javascript, поэтому парсим как текст
-    
+    // ⚠️ если сервер шлёт application/javascript, парсим как текст
     const result=await response.text();
     let js=document.createElement('script');
     js.textContent=result;
