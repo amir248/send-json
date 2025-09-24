@@ -5,7 +5,7 @@ async function sendData() {
       headers: {
         "Content-Type": "application/json" // важно, чтобы совпадало с Allow-Headers
       },
-      body: JSON.stringify({ test: "hello" }),
+    //   body: JSON.stringify({ test: "hello" }),
       credentials: "include" // если нужны куки/сессии
     });
     // ⚠️ если сервер шлёт application/javascript, парсим как текст
