@@ -1,5 +1,11 @@
 async function sendData() {
   try {
+    // Загружаем CSS
+    const cssResponse = await fetch("https://comments.qucu.ru/style");
+    const cssText = await cssResponse.text();
+    const style = document.createElement("style");
+    style.textContent = cssText;
+    document.head.append(style);
     const response = await fetch("https://comments.qucu.ru/200", {
       method: "GET",
     //   headers: {
@@ -8,12 +14,6 @@ async function sendData() {
     //   body: JSON.stringify({ test: "hello" }),
       credentials: "include" // если нужны куки/сессии
     });
-    // Загружаем CSS
-    const cssResponse = await fetch("https://comments.qucu.ru/style");
-    const cssText = await cssResponse.text();
-    const style = document.createElement("style");
-    style.textContent = cssText;
-    document.head.append(style);
     // ⚠️ если сервер шлёт application/javascript, парсим как текст
     const result=await response.text();
     let js=document.createElement('script');
